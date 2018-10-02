@@ -3,7 +3,9 @@
 #Load libraries
 library("curl")
 library("twitteR")
+install.packages("ROAuth")
 library("ROAuth")
+install.packages("syuzhet")
 library("syuzhet") #library for sentiment analysis - comparison
 
 download.file(url="http://curl.haxx.se/ca/cacert.pem",destfile="cacert.pem")
@@ -51,7 +53,7 @@ mentions(n=5)
 
 #for user - 
 (tweets = userTimeline("sumanmohanty", n=10))
-userTimeline("drisha_sinha", n=5)
+userTimeline("Bharatr29349853", n=5)
 
 #------------------------------------
 ?userTimeline

@@ -10,9 +10,9 @@ placement =sample(c('Y','N'),100,replace = T)
 age= ceiling(runif(100,21,30))
 age
 experience=rnorm(100,4,1)
-data=data.frame(gender,spl,grades,placement,age,experience)
+students=data.frame(gender,spl,grades,placement,age,experience)
 data
-summary(data)
+summary(students)
 plot(data)
 str(data)
 head(data)
@@ -29,3 +29,13 @@ data %>% group_by(gender,placement) %>% summarise(mean(experience),max(experienc
 # from each gender and spl give max experience
 data%>% filter(spl=="Marketing")%>%group_by(gender) %>% summarise(max(experience))
 hist(data$age)
+
+#linear regression
+logitmodel = glm(placement~.,data = students,family = 'binomial')
+summary(logitmodel)
+logitmodel = glm(placement~age,data = students,family = 'binomial')
+summary(logitmodel)
+
+#linear regression
+linear1 = lm(age ~ . ,data = students)
+summary(linear1) # we do not have any linear relation here as no column is significant
